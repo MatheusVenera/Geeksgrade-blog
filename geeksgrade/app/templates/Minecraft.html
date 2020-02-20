@@ -1,0 +1,55 @@
+{%extends "base.html"%}
+{%block corpo%}
+<a href="/index" style="text-decoration: None;"><h1>Geek Grades</h1></a>
+    <nav id="menu">
+        <ul>
+            <li><a href="/logar">Login</a></li>
+            <li><a href="/cadastro">Cadastrar</a></li>
+            {%block logout%}
+            {% if current_user.is_authenticated%} 
+            <li><a href="/perfil">Perfil</a></li>
+            <li><a href="/logout">Sair</a></li>
+            {%endif%}   
+            {%endblock%}
+        </ul>
+    </nav>  
+<img src="{{url_for('static',filename='images/mine.png')}}"  width=200px height=200px></a>
+<p>Minecraft é um jogo eletrônico tipo sandbox e independente de mundo aberto que permite a construção usando blocos (cubos) dos quais o mundo é feito. Foi criado por Markus "Notch" Persson. O desenvolvimento de Minecraft começou por volta do dia 10 de maio de 2009.
+</P>
+<P>Data de lançamento de: 17 de maio de 2009
+</p>
+
+{%if nota_usuario is none%}
+    <form action="/Minecraft" method="POST" >
+        {{form.csrf_token}}
+        <p style="text-align: center;">{{ form.nota.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form.nota() }}</p>
+        <p style="text-align: center;">{{ form.comentario.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form.comentario }}</p>
+        <p style="position: relative; left: 47%;">{{ form.submit }}</p>
+    </form>
+{%else%}
+    <form action="/Minecraft" method="POST" >
+        {{form2.csrf_token}}
+        <p style="text-align: center;">{{ form2.nota.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form2.nota() }}</p>
+        <p style="text-align: center;">{{ form2.comentario.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form2.comentario }}</p>
+        <p style="position: relative; left: 47%;">{{ form2.submit }}</p>
+        
+    </form>
+{%endif%}
+<p>Média: {{media}}</p>
+<br>
+{%if numero_de_usuario == 0 %}
+{%else%}
+<hr>
+    {% for i in range (numero_de_usuario) %}
+        <img src="{{url_for('static',filename=lista_imagens[i])}}" width="10%" height="10%">
+        <p>Usuário: {{todos_nomes[i]}}</p>
+        <p>Comentário: {{todos_comentarios[i]}}</p>
+        <br>
+        <hr>
+    {% endfor %}    
+{%endif%}
+{%endblock%}

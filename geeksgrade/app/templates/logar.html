@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+
+{%block corpo%}
+<a href="/index" style="text-decoration: None;"><h1>Geek Grades</h1></a>
+<form action="" method="POST" enctype="multipart/form-data">
+    {{form.csrf_token}}
+    <p style="text-align: center;">{{ form.email.label }}</p>
+    <p style="position: relative; left: 43.5%;">{{ form.email() }}</p>
+    <p style="text-align: center;">{{ form.senha.label }}</p>
+    <p style="position: relative; left: 43.5%;">{{ form.senha() }}</p>
+    {% if senha_incorreta == True%}
+        <ul>
+            <li style="color: red; position: relative; left: 45%">Senha incorreta!</li>
+        </ul>
+    {%endif%}
+    <p style="position: relative; left: 47%;">{{ form.submit }}</p>
+</form>
+<br>
+<br>
+<p style="position: relative; text-align: center;">Não tem cadastro? <a href="/cadastro">Cadastre-se</a></p>
+{%endblock%}

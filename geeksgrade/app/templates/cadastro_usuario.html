@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+
+{%block corpo%}
+<a href="/index" style="text-decoration: None;"><h1>Geek Grades</h1></a>
+<form action="" method="POST" enctype="multipart/form-data">
+    {{form.csrf_token}}
+    <div id="cadastro">
+    <br>
+    <p >{{ form.nome.label }}:</p>
+    <p >{{ form.nome() }}</p>
+    <p >{{ form.email.label }}:</p>
+    <p >{{ form.email() }}</p>
+    <ul>
+        {% for error in form.email.errors %}
+            <li style="color: red; text-align: left;">{{ error }}</li>
+        {% endfor %}
+    </ul>
+
+    <p >{{ form.data_nascimento.label }}:</p>
+    <p >{{ form.data_nascimento() }}</p>
+    <p >{{ form.foto.label }}:</p>
+    <p >{{ form.foto() }}</p>
+    <p >{{ form.senha.label }}:</p>
+    <p >{{ form.senha() }}</p>
+    <p >{{ form.senha_verificadora.label }}:</p>
+    <p >{{ form.senha_verificadora() }}</p>
+    <p >{{ form.submit }}</p>
+    <br>
+    <br>
+    </div>
+</form>
+
+<br>
+<br>
+<p style="position: relative; text-align: center;">Já tem cadastro? <a href="/logar">Logar</a></p>
+{%endblock%}

@@ -1,0 +1,52 @@
+{%extends "base.html"%}
+{%block corpo%}
+<a href="/index" style="text-decoration: None;"><h1>Geek Grades</h1></a>
+    <nav id="menu">
+        <ul>
+            <li><a href="/logar">Login</a></li>
+            <li><a href="/cadastro">Cadastrar</a></li>
+            {%block logout%}
+            {% if current_user.is_authenticated%} 
+            <li><a href="/perfil">Perfil</a></li>
+            <li><a href="/logout">Sair</a></li>
+            {%endif%}  
+            {%endblock%} 
+        </ul>
+    </nav>  
+<img src="{{url_for('static',filename='images/gta.png')}}"  width=200px height=200px>
+<p>Depois de viver em Liberty City por cinco anos, Carl "CJ" Johnson retorna a Los Santos em 1992 para o enterro de sua mãe. ... Carl e seus novos amigos abrem uma oficina em San Fierro, enquanto esperam por uma oportunidade de retornar para Los Santos.</p>
+<p>Data de lançamento de: 26 de outubro de 2004</p>
+{%if nota_usuario is none%}
+    <form action="/GTA_San_Andreas" method="POST" >
+        {{form.csrf_token}}
+        <p style="text-align: center;">{{ form.nota.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form.nota() }}</p>
+        <p style="text-align: center;">{{ form.comentario.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form.comentario }}</p>
+        <p style="position: relative; left: 47%;">{{ form.submit }}</p>
+    </form>
+{%else%}
+    <form action="/GTA_San_Andreas" method="POST" >
+        {{form2.csrf_token}}
+        <p style="text-align: center;">{{ form2.nota.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form2.nota() }}</p>
+        <p style="text-align: center;">{{ form2.comentario.label }}</p>
+        <p style="position: relative; left: 43.5%;">{{ form2.comentario }}</p>
+        <p style="position: relative; left: 47%;">{{ form2.submit }}</p>
+        
+    </form>
+{%endif%}
+<p>Média: {{media}}</p>
+<br>
+{%if numero_de_usuario == 0 %}
+{%else%}
+<hr>
+    {% for i in range (numero_de_usuario) %}
+        <img src="{{url_for('static',filename=lista_imagens[i])}}" width="10%" height="10%">
+        <p>Usuário: {{todos_nomes[i]}}</p>
+        <p>Comentário: {{todos_comentarios[i]}}</p>
+        <br>
+        <hr>
+    {% endfor %}    
+{%endif%}
+{%endblock%}

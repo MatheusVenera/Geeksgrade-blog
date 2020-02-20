@@ -1,0 +1,7 @@
+flask
+flask_login
+flask_wtf
+flask_sqlalchemy
+flask_uploads
+werkzeug
+python_dotenv

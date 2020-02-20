@@ -1,0 +1,17 @@
+{%extends "base.html"%}
+{%block corpo%}
+<form action="" method="POST" enctype="multipart/form-data">
+    {{form.csrf_token}}
+    <p style="text-align: center;">{{ form.nome.label }}</p>
+    <p style="position: relative; left: 43.5%;">{{ form.nome() }}</p>
+    <p style="text-align: center;">{{ form.data_nascimento.label }}</p>
+    <p style="position: relative; left: 44.5%;">{{ form.data_nascimento() }}</p>
+    <p style="text-align: center;">{{ form.foto.label }}</p>
+    <p style="position: relative; left: 45.5%;">{{ form.foto() }}</p>
+    <p style="text-align: center;">{{ form.senha.label }}</p>
+    <p style="position: relative; left: 43.5%;">{{ form.senha() }}</p>
+    <p style="text-align: center;">{{ form.senha_verificadora.label }}</p>
+    <p style="position: relative; left: 43.5%;">{{ form.senha_verificadora() }}</p>
+    <p style="position: relative; left: 47%;">{{ form.submit }}</p>
+</form>
+{%endblock%}

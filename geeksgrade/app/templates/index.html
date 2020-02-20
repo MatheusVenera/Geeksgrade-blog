@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+
+
+
+{%block corpo%}
+<a href="/index" style="text-decoration: None;"><h1>Geek Grades</h1></a>
+    <nav id="menu">
+        <ul>
+            <li><a href="/logar">Login</a></li>
+            <li><a href="/cadastro">Cadastrar</a></li>
+            {%block logout%}
+            {% if current_user.is_authenticated%} 
+            <li><a href="/perfil">Perfil</a></li>
+            <li><a href="/logout">Sair</a></li>
+            {%endif%}
+            {%endblock%}
+        </ul>
+    </nav>  
+    <br>
+    <a href="/GTA_San_Andreas"><img src="{{url_for('static',filename='images/gta.png')}}"  width=200px height=200px></a>
+<p>Depois de viver em Liberty City por cinco anos, Carl "CJ" Johnson retorna a Los Santos em 1992 para o enterro de sua mãe. ... Carl e seus novos amigos abrem uma oficina em San Fierro, enquanto esperam por uma oportunidade de retornar para Los Santos.</p>
+<br><hr>
+<a href="/God_Of_War"><img src="{{url_for('static',filename='images/god.jpg')}}"  width=200px height=200px></a>
+<p> História centra-se em torno de seu personagem, Kratos, um guerreiro espartano enganado para matar sua esposa e filha por seu antigo mestre, o deus da guerra Ares. ... Existem duas eras na série God of War. A primeira era são os primeiros sete jogos, baseados na mitologia grega, com a vingança sendo o motivo central.</p>
+<br><hr>
+<a href="/Minecraft"><img src="{{url_for('static',filename='images/mine.png')}}"  width=200px height=200px></a>
+<p>Minecraft é um jogo eletrônico tipo sandbox e independente de mundo aberto que permite a construção usando blocos (cubos) dos quais o mundo é feito. Foi criado por Markus "Notch" Persson. O desenvolvimento de Minecraft começou por volta do dia 10 de maio de 2009.</p>
+<br><hr>
+{%endblock%}
